@@ -5,5 +5,6 @@
 </div>
 <hr>
 <?php echo form_open('/posts/delete/'.$post['id']); ?>
-	<input type="submit" value="delete" class="btn btn-danger">
+	<input type="submit" value="Delete" class="btn btn-danger">
 </form>
+<a href="/posts/edit/<?php echo $post['slug'] ?>" class="btn btn-warning">Edit</a>
