@@ -26,10 +26,16 @@
 				</li>
 			</ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/login">Login</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/register">Register</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>posts/create">Create Posts</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
             </ul>
 			<form  class="d-flex">
 				<input class="form-control me-sm-2" type="search" placeholder="Search">
@@ -41,6 +47,15 @@
 <div class="container">
     <?php if($this->session->flashdata('user_registered')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
+    <?php endif; ?>
+    <?php if($this->session->flashdata('login_failed')): ?>
+        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
+    <?php endif; ?>
+    <?php if($this->session->flashdata('user_loggedin')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</p>'; ?>
+    <?php endif; ?>
+    <?php if($this->session->flashdata('user_loggedout')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</p>'; ?>
     <?php endif; ?>
 </div>
 <div class="container p-lg-5">
