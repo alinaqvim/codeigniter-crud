@@ -54,7 +54,13 @@ public function edit($slug) {
         redirect('users/login');
     }
 	$data['post'] = $this->post_model->get_posts($slug);
-	if(empty($data['post'])) {
+
+    // Check User
+    if($this->session->userdata('user_id') != $data['post']['user_id']) {
+        redirect('posts');
+    }
+
+    if(empty($data['post'])) {
 		show_404();
 	}
 	$data['title'] = "Edit Post";
