@@ -26,6 +26,9 @@
 				</li>
 			</ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/register">Register</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>posts/create">Create Posts</a></li>
             </ul>
 			<form  class="d-flex">
