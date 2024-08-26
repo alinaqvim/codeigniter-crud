@@ -19,12 +19,21 @@ class Users extends CI_Controller {
         }
         else {
 //            die('Continue');
-            $enc_password = md5($this->input->post('password'));
+
+
+
+//            $enc_password = md5($this->input->post('password'));
+
+
+            $password = $this->input->post('password');
+            $options = ['cost' => 12];
+            $hashPassword = password_hash($password, PASSWORD_DEFAULT, $options);
+
             $data = array(
                 'name' => $this->input->post('name'),
                 'username' => $this->input->post('username'),
                 'email' => $this->input->post('email'),
-                'password' => $enc_password,
+                'password' => $hashPassword,
                 'zipcode' => $this->input->post('zipcode'),
             );
             $this->user_model->register($data);
@@ -44,7 +53,11 @@ class Users extends CI_Controller {
         }
         else {
             $username = $this->input->post('username');
-            $password = md5($this->input->post('password'));
+
+//            $password = md5($this->input->post('password'));
+
+            $password = $this->input->post('password');
+
             $user_id = $this->user_model->login($username, $password);
             if($user_id) {
 //                die('SUCCESS');

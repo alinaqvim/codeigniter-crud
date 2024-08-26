@@ -8,14 +8,16 @@
         }
 
         public function login($username, $password){
-            $this->db->where('username', $username);
-            $this->db->where('password', $password);
-            $result = $this->db->get('users');
-            if($result->num_rows() == 1) {
-                return $result->row(0)->id;
-            }
-            else {
-                return false;
+            $query = $this->db->where('username', $username)->get('users');
+            if($query->num_rows() > 0){
+                $user = $query->row_array();
+                $stored_hash = $user['password'];
+                if(password_verify($password, $stored_hash)){
+                    return $user['id'];
+                }
+                else {
+                    return false;
+                }
             }
         }
 
