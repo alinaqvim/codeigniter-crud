@@ -18,7 +18,8 @@ class Post_model extends CI_Model {
 		$data = array(
 			'title' => $this->input->post('title'),
 			'slug' => $slug,
-			'body' => $this->input->post('body')
+			'body' => $this->input->post('body'),
+            'user_id' => $this->session->userdata('user_id')
 		);
 		return $this->db->insert('posts', $data);
 	}
