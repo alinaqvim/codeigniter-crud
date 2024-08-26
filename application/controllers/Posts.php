@@ -19,6 +19,10 @@ class Posts extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	}
 	public function create() {
+        // Check login
+        if(!$this->session->userdata('logged_in')) {
+            redirect('users/login');
+        }
 		$data['title'] = 'Create Post';
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
@@ -37,10 +41,18 @@ class Posts extends CI_Controller {
 
 	}
 	public function delete($id) {
+        // Check login
+        if(!$this->session->userdata('logged_in')) {
+            redirect('users/login');
+        }
 		$this->post_model->delete_post($id);
 		redirect('posts');
 }
 public function edit($slug) {
+    // Check login
+    if(!$this->session->userdata('logged_in')) {
+        redirect('users/login');
+    }
 	$data['post'] = $this->post_model->get_posts($slug);
 	if(empty($data['post'])) {
 		show_404();
@@ -51,6 +63,10 @@ public function edit($slug) {
 	$this->load->view('templates/footer');
 }
 public function update() {
+    // Check login
+    if(!$this->session->userdata('logged_in')) {
+        redirect('users/login');
+    }
 //		echo 'SUBMITTED';
 	$id = $this->input->post('id');
 	$slug = url_title($this->input->post('title'));

@@ -25,6 +25,7 @@
 					<a class="nav-link" href="<?php echo base_url(); ?>posts">Blog</a>
 				</li>
 			</ul>
+            <?php if (!$this->session->userdata('logged_in')) : ?>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/login">Login</a></li>
             </ul>
@@ -34,6 +35,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>posts/create">Create Posts</a></li>
             </ul>
+            <?php endif; ?>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
             </ul>
